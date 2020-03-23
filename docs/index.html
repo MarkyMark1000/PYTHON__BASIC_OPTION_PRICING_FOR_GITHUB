@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BASIC OPTION PRICING</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <section id="basic-option-pricing">
+        <h1>BASIC OPTION PRICING</h1>
+        <section id="overview">
+            <h2>Overview</h2>
+            <section id="tutorial">
+                <h3>Tutorial</h3>
+                <p>Within this project, I wanted to explore the use of numpy, pandas, scipy and matplotlib for analysing options. This is a basic calculation which only considers European Options and Monte Carlo Simulations for European Options. There is no rate curve, borrow curve, vol surface etc.</p>
+                <p>A set of tests have been created to ensure the obtained price and greeks are reasonably accurate.</p>
+                <p>Originally, this was written using Anaconda, however I decided to analyse this data using a local virtual environment and a requirements file, but found that a relatively up to date version of python was required such as 3.7.</p>
+            </section>
+        </section>
+        <section id="installation-guide">
+            <h2>Installation Guide</h2>
+            <section id="manual-installation">
+                <h3>Manual Installation</h3>
+                <ul>
+                    <li>
+                        <dl>
+                            <dt>If it exists, remove the venv virtual environment directory using the following:</dt>
+                            <dd>
+                                <ul>
+                                    <li><code>rm -rf venv      (mac)</code></li>
+                                    <li><code>rmdir venv /s    (windows)</code></li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>Recreate the virtual environment directory using the following:</dt>
+                            <dd>
+                                <ul>
+                                    <li>
+                                        <dl>
+                                            <dt>Mac:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li><code>python3.7 -m venv venv</code></li>
+                                                    <li><code>deactivate or source deactivate</code></li>
+                                                    <li><code>source venv/bin/activate</code></li>
+                                                    <li><code>pip install -r requirements.txt</code></li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt>Windows:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li><code>vipython3.7 -m venv venv</code></li>
+                                                    <li><code>deactivate or source deactivate</code></li>
+                                                    <li><code>.\venv\Scripts\activate</code></li>
+                                                    <li><code>pip install -r requirements.txt</code></li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>Note, you may need to install the app manually using:</dt>
+                            <dd>
+                                <ul>
+                                    <li><code>pip install -e .</code></li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>If necessary, the html document in the docs directory can be rebuilt using:</dt>
+                            <dd>
+                                <ul>
+                                    <li>
+                                        <dl>
+                                            <dt>Mac:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li><code>rm -rf ./docs/*.html</code></li>
+                                                    <li><code>rst2html ./docs/index.rst ./docs/index.html</code></li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt>Windows:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li><code>del .\docs\*.html</code></li>
+                                                    <li><code>rst2html.py .\docs\index.rst .\docs\index.html</code></li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </section>
+            <section id="makefile-installation-mac-linux-or-unix">
+                <h3>MakeFile Installation (Mac, Linux or Unix)</h3>
+                <p>This project was written and tested on a mac and it has not been tested on Linux.</p>
+                <ul>
+                    <li>
+                        <dl>
+                            <dt>To get help:</dt>
+                            <dd>
+                                <ul>
+                                    <li>Run 'make' or 'make help' to get help on this project.</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>It is sensible to reset the virtual environment so that it reflects the current requirements.txt file:</dt>
+                            <dd>
+                                <ul>
+                                    <li>Run 'make venv' to build the virtual environment from requirements.txt.</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li><code>pip install -e .</code> should be run automatically</li>
+                    <li>
+                        <dl>
+                            <dt>There isn't much supporting documentation, but it can be rebuilt using the following:</dt>
+                            <dd>
+                                <ul>
+                                    <li>Run 'make venv-docs' to build /docs/index.html</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <section id="running-the-application">
+            <h2>Running the Application</h2>
+            <section id="manual">
+                <h3>Manual</h3>
+                <ul>
+                    <li>
+                        <dl>
+                            <dt>To run the app using the normal environment:</dt>
+                            <dd>
+                                <ul>
+                                    <li>
+                                        <dl>
+                                            <dt>Mac:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li><code>deactivate or source deactivate</code></li>
+                                                    <li><code>source venv/bin/activate</code></li>
+                                                    <li><code>python3.7 ./run/run_0_BlackScholesvsIntrinsic.py</code></li>
+                                                    <li>etc .....</li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt>Windows:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li><code>deactivate or source deactivate</code></li>
+                                                    <li><code>.\venv\Scripts\activate</code></li>
+                                                    <li><code>``python3.7 ./run/run_0_BlackScholesvsIntrinsic.py</code></li>
+                                                    <li>etc .....</li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </section>
+            <section id="makefile">
+                <h3>MakeFile</h3>
+                <ul>
+                    <li>
+                        <dl>
+                            <dt>To run in a normal environemnt:</dt>
+                            <dd>
+                                <ul>
+                                    <li>Run 'make run-bs-int'</li>
+                                    <li>Run 'run-bs-monte'</li>
+                                    <li>Run 'make run-th-graphs'</li>
+                                    <li>Run 'run-thread'</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <section id="testing-the-application">
+            <h2>Testing the Application</h2>
+            <section id="id1">
+                <h3>Manual</h3>
+                <ul>
+                    <li>Depending upon if new packages have been installed and if you wish to keep them in the project, it may be worth rebuilding the virtual environment and requirements.txt file to ensure they are consistent:</li>
+                    <li>
+                        <dl>
+                            <dt>To run a basic test:</dt>
+                            <dd>
+                                <ul>
+                                    <li>
+                                        <dl>
+                                            <dt>Mac:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li><code>deactivate or source deactivate</code></li>
+                                                    <li><code>source venv/bin/activate</code></li>
+                                                    <li><code>python3.7 -m unittest</code></li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt>Windows:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li><code>deactivate or source deactivate</code></li>
+                                                    <li><code>.\venv\Scripts\activate</code></li>
+                                                    <li><code>python3.7 -m unittest</code></li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>To run a test showing the coverage of the test in a report:</dt>
+                            <dd>
+                                <ul>
+                                    <li>
+                                        <dl>
+                                            <dt>Mac:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li><code>deactivate or source deactivate</code></li>
+                                                    <li><code>source venv/bin/activate</code></li>
+                                                    <li><code>coverage run -m unittest discover</code></li>
+                                                    <li><code>coverage report</code></li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt>Windows:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li><code>deactivate or source deactivate</code></li>
+                                                    <li><code>.\venv\Scripts\activate</code></li>
+                                                    <li><code>coverage run -m unittest discover</code></li>
+                                                    <li><code>coverage report</code></li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>To run a test showing the coverage of the test in an html based report:</dt>
+                            <dd>
+                                <ul>
+                                    <li>
+                                        <dl>
+                                            <dt>Mac:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li><code>deactivate or source deactivate</code></li>
+                                                    <li><code>source venv/bin/activate</code></li>
+                                                    <li><code>coverage run -m unittest discover</code></li>
+                                                    <li><code>coverage html</code></li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt>Windows:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li><code>deactivate or source deactivate</code></li>
+                                                    <li><code>.\venv\Scripts\activate</code></li>
+                                                    <li><code>coverage run -m unittest discover</code></li>
+                                                    <li><code>coverage html</code></li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </section>
+            <section id="id2">
+                <h3>MakeFile</h3>
+                <ul>
+                    <li>
+                        <dl>
+                            <dt>Depending upon if new packages have been installed and if you wish to keep them in the project, it may be worth rebuilding the virtual environment and requirements.txt file to ensure they are consistent:</dt>
+                            <dd>
+                                <ul>
+                                    <li>
+                                        <dl>
+                                            <dt>To throw away any new packages and recreate the venv virtual environment from the requirements.txt file:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li>Run 'make venv' to build a new venv environment from existing requirements.txt file.</li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt>To recreate the requirements.txt file from the current venv virtual environment:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li>Run 'make venv-build-req' to build a new requirements.txt file from existing venv environment.</li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>To run a basic test:</dt>
+                            <dd>
+                                <ul>
+                                    <li>Run 'make venv-test' to run test in venv virtual environment.</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>To run a test showing the coverage of the test in a report:</dt>
+                            <dd>
+                                <ul>
+                                    <li>Run 'make venv-cov-report' to run test in venv virtual environment and display report.</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>To run a test showing the coverage of the test in an html based report:</dt>
+                            <dd>
+                                <ul>
+                                    <li>Run 'make venv-cov-html' to run test in venv virtual environment.</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <section id="test-coding-standards">
+            <h2>Test Coding Standards</h2>
+            <section id="id3">
+                <h3>Manual</h3>
+                <ul>
+                    <li>
+                        <dl>
+                            <dt>Test the code within the analytics directory:</dt>
+                            <dd>
+                                <ul>
+                                    <li>
+                                        <dl>
+                                            <dt>Mac:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li><code>deactivate or source deactivate</code></li>
+                                                    <li><code>source venv/bin/activate</code></li>
+                                                    <li><code>pycodestyle --statistics ./analytics/*.py</code></li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt>Windows:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li><code>deactivate or source deactivate</code></li>
+                                                    <li><code>.\venv\Scripts\activate</code></li>
+                                                    <li><code>pycodestyle --statistics filename.py</code></li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>Test the code within the run directory:</dt>
+                            <dd>
+                                <ul>
+                                    <li>
+                                        <dl>
+                                            <dt>Mac:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li><code>deactivate or source deactivate</code></li>
+                                                    <li><code>source venv/bin/activate</code></li>
+                                                    <li><code>ppycodestyle --statistics ./run/*.py</code></li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt>Windows:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li><code>deactivate or source deactivate</code></li>
+                                                    <li><code>.\venv\Scripts\activate</code></li>
+                                                    <li><code>pycodestyle --statistics filename.py</code></li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>Test the code within the test directory:</dt>
+                            <dd>
+                                <ul>
+                                    <li>
+                                        <dl>
+                                            <dt>Mac:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li><code>deactivate or source deactivate</code></li>
+                                                    <li><code>source venv/bin/activate</code></li>
+                                                    <li><code>ppycodestyle --statistics ./test/*.py</code></li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt>Windows:</dt>
+                                            <dd>
+                                                <ul>
+                                                    <li><code>deactivate or source deactivate</code></li>
+                                                    <li><code>.\venv\Scripts\activate</code></li>
+                                                    <li><code>pycodestyle --statistics filename.py</code></li>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </section>
+            <section id="id4">
+                <h3>MakeFile</h3>
+                <ul>
+                    <li>
+                        <dl>
+                            <dt>Test the code within the analytics, run and test directory:</dt>
+                            <dd>
+                                <ul>
+                                    <li>Run 'make pystat'</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </section>
+            <section id="additional-commands">
+                <h3>Additional Commands</h3>
+                <p>A number of additional makefile commands exist to help clean up and manage the environment:</p>
+                <ul>
+                    <li>
+                        <dl>
+                            <dt>To clean files such as __pycache__ etc:</dt>
+                            <dd>
+                                <ul>
+                                    <li>Run 'make venv-clean'</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>If you wish to remove the venv virtual environment directory:</dt>
+                            <dd>
+                                <ul>
+                                    <li>Run 'make clean-venv'</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>If you wish to rebuild the requirements file:</dt>
+                            <dd>
+                                <ul>
+                                    <li>Run 'venv-build-req'</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </section>
+        </section>
+    </section>
+</body>
+</html>

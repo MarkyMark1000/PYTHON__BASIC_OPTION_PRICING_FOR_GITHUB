@@ -1,0 +1,16 @@
+coverage==5.0.4
+cycler==0.10.0
+docutils==0.16
+Genshi==0.7.3
+kiwisolver==1.1.0
+matplotlib==3.2.0
+numpy==1.18.1
+pandas==1.0.1
+pycodestyle==2.5.0
+Pygments==2.0.2
+pyparsing==2.4.6
+python-dateutil==2.8.1
+pytz==2019.3
+rst2html5==1.10.3
+scipy==1.4.1
+six==1.14.0
