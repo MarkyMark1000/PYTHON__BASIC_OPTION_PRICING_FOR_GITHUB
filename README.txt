@@ -1,1 +1,4 @@
-To get this to work, I needed to ensure I was using a recent version of python, ie version 3.7
+This project explores using numpy, pandas, scipy and matplotlib to price European Options
+using the Black Scholes analysis and Monte Carlo methods.
+
+Please see the docs directory for ull instructions.
