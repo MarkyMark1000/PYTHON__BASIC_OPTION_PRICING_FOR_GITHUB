@@ -21,6 +21,12 @@ help:
 	@echo "make run-bs-monte      		- runs black scholes vs monte carlo comparison."
 	@echo "make run-th-graphs      	- runs black scholes vs threaded monte carlo graph comparison (no actual threading)."
 	@echo "make run-thread      		- runs threaded time comparison for straddle"
+	@echo "Docker:   (need to install and run docker)"
+	@echo "make doc-prune-all		- DANGER: removes all stopped containers, images without containers etc"
+	@echo "make doc-test-img-ub     	- builds docker image for tests using ubuntu image."
+	@echo "make doc-test-run-ub     	- runs docker image as an interactive container for tests using ubuntu."
+	@echo "make doc-test-img-py     	- builds docker image for tests using python image."
+	@echo "make doc-test-run-py     	- runs docker image as an interactive container for tests using python."
 	@echo "Tests:"
 	@echo "make venv-test   		- Run the Test in the virtual environment."
 	@echo "make venv-cov-report		- Run the Test in the virtual environment using coverage and then display coverage report"
@@ -85,6 +91,43 @@ run-thread:
 	@echo "Running application using venv virtual environment."
 	@echo ""
 	( source venv/bin/activate; python3.7 ./run/run_3_ThreadedOption.py; )
+	@echo ""
+
+doc-prune-all:
+	@echo ""
+	@echo "DANGER: removing stopped docker containers and images"
+	@echo ""
+	@echo " removing all stopped containers, images without containers etc"
+	@echo ""
+	docker system prune -a
+	@echo ""
+
+doc-test-img-ub:
+	@echo ""
+	@echo "Building docker image for tests using ubuntu image"
+	@echo ""
+	docker build -f ./docker/DockerfileUB -t mark/markswebsite_tests_ub .
+	@echo ""
+
+doc-test-run-ub:
+	@echo ""
+	@echo "Running docker image as an interactive container for tests, using ubuntu"
+	@echo ""
+	docker run -it mark/markswebsite_tests_ub
+	@echo ""
+
+doc-test-img-py:
+	@echo ""
+	@echo "Building docker image for tests using python image."
+	@echo ""
+	docker build -f ./docker/DockerfilePY -t mark/markswebsite_tests_py .
+	@echo ""
+
+doc-test-run-py:
+	@echo ""
+	@echo "Running docker image as an interactive container for tests, using python "
+	@echo ""
+	docker run -it mark/markswebsite_tests_py
 	@echo ""
 
 venv-test:

@@ -1,0 +1,34 @@
+# The two DockerFiles in this directory are experiamental.   I wanted to get some practice in
+# with docker, so created one that uses ubuntu (this one) and one that uses the python image
+# as a base.   The python one was my second attempt and much simpler.
+# Making matplotlib work, looks like more effort, so I decided to leave it for now.
+
+# Use ubuntu as base operating system
+FROM ubuntu:19.10
+
+# Update and install python
+RUN apt-get update -y && \
+  apt-get install -y --no-install-recommends \
+  apt-utils \
+  python3.7 \
+  python3-venv \
+  python3-pip \
+  make
+
+# Create python directory and change working dir
+RUN mkdir python
+WORKDIR /python
+
+# Copy requirements file
+COPY ./ ./
+
+# Please note that I found the following useful:
+# https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/
+
+# Setup the virtual environment
+RUN ["/bin/bash", "-c", "rm -rf venv"]
+RUN ["/bin/bash", "-c", "python3.7 -m venv venv"]
+RUN ["/bin/bash", "-c", "(source venv/bin/activate; pip install -r requirements.txt; pip install -e .;)"]
+
+# Run the unittest
+CMD ["/bin/bash", "-c", "(source venv/bin/activate; python3.7 -m unittest;)"]

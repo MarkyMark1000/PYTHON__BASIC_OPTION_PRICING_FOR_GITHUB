@@ -1,0 +1,20 @@
+# The two DockerFiles in this directory are experiamental.   I wanted to get some practice in
+# with docker, so created one that uses ubuntu (this one) and one that uses the python image
+# as a base.   The python one was my second attempt and much simpler.
+# Making matplotlib work, looks like more effort, so I decided to leave it for now.
+
+# Use python image
+FROM python:3.7
+
+# Change working directory
+WORKDIR /usr/src/app
+
+# Copy requirements file
+COPY ./ ./
+
+# Install requirements
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -e .
+
+# Run script
+CMD [ "python", "-m", "unittest" ]
