@@ -106,28 +106,28 @@ doc-test-img-ub:
 	@echo ""
 	@echo "Building docker image for tests using ubuntu image"
 	@echo ""
-	docker build -f ./docker/DockerfileUB -t mark/markswebsite_tests_ub .
+	docker build -f ./docker/DockerfileUB -t mark/optionpricing_tests_ub .
 	@echo ""
 
 doc-test-run-ub:
 	@echo ""
 	@echo "Running docker image as an interactive container for tests, using ubuntu"
 	@echo ""
-	docker run -it mark/markswebsite_tests_ub
+	docker run -it mark/optionpricing_tests_ub
 	@echo ""
 
 doc-test-img-py:
 	@echo ""
 	@echo "Building docker image for tests using python image."
 	@echo ""
-	docker build -f ./docker/DockerfilePY -t mark/markswebsite_tests_py .
+	docker build -f ./docker/DockerfilePY -t mark/optionpricing_tests_py .
 	@echo ""
 
 doc-test-run-py:
 	@echo ""
 	@echo "Running docker image as an interactive container for tests, using python "
 	@echo ""
-	docker run -it mark/markswebsite_tests_py
+	docker run -it mark/optionpricing_tests_py
 	@echo ""
 
 venv-test:
