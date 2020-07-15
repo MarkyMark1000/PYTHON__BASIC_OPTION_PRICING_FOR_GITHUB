@@ -395,4 +395,3 @@ class BasicMonteCarloOptionThreaded(threading.Thread):
         # This should return a tuple containing the results and
         # the std dev of the monte carlo calc's.
         return self.__calculateOptionNew(npStockPrice)
-

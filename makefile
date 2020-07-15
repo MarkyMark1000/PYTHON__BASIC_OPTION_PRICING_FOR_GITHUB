@@ -161,11 +161,11 @@ pystat:
 	@echo ""
 	@echo " **** code standards - run ****"
 	@echo ""
-	( source venv/bin/activate; pycodestyle --statistics ./run/*.py; )
+	( source venv/bin/activate; pycodestyle --statistics ./run/run_*.py; )
 	@echo ""
 	@echo " **** code standards - test ****"
 	@echo ""
-	( source venv/bin/activate; pycodestyle --statistics ./test/*.py; )
+	( source venv/bin/activate; pycodestyle --statistics ./test/test_*.py; )
 	@echo ""
 	
 venv-clean:

@@ -18,6 +18,15 @@ Originally, this was written using Anaconda, however I decided to analyse this d
 virtual environment and a requirements file, but found that a relatively up to date version of python
 was required such as 3.7.
 
+The Gamma calculation has a discontinuity at the strike price (imagine differentiating the intrinsic
+value of an option twice).   This makes the results a bit unstable for gamma and I have not looked
+into this further because my main objective was to try out Numpy, Pandas, Matplotlib etc.   See the
+following discussion for more information:
+
+https://quant.stackexchange.com/questions/18208/greeks-why-does-my-monte-carlo-give-correct-delta-but-incorrect-gamma#%20greeks-why-does-my-monte-carlo-give-correct-delta-but-incorrect-gamma
+
+I have also created some docker files for running the tests.
+
 Installation Guide
 ==================
 

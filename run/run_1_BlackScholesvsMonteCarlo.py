@@ -64,7 +64,7 @@ class compareBlackScholesToMonteCarloOption():
         # (npMonteValue, npOptionMonteSTD) = self.__objMonte. \
         #     getOptionPrice(npStock)
         npMonteValue = self.__objMonte. \
-             getOptionPrice(npStock)[0]
+            getOptionPrice(npStock)[0]
 
         # Build a dataframe with the results
         pdResults = pd.DataFrame({
