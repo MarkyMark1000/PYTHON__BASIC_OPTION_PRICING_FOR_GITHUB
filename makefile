@@ -46,7 +46,7 @@ venv:
 	@echo ""
 	rm -rf venv
 	@echo ""
-	python3.7 -m venv venv
+	python3 -m venv venv
 	@echo ""
 	( source venv/bin/activate; pip install -r requirements.txt; )
 	@echo ""
@@ -69,28 +69,28 @@ run-bs-int:
 	@echo ""
 	@echo "Running application using venv virtual environment."
 	@echo ""
-	( source venv/bin/activate; python3.7 ./run/run_0_BlackScholesvsIntrinsic.py; )
+	( source venv/bin/activate; python3 ./run/run_0_BlackScholesvsIntrinsic.py; )
 	@echo ""
 
 run-bs-monte:
 	@echo ""
 	@echo "Running application using venv virtual environment."
 	@echo ""
-	( source venv/bin/activate; python3.7 ./run/run_1_BlackScholesvsMonteCarlo.py; )
+	( source venv/bin/activate; python3 ./run/run_1_BlackScholesvsMonteCarlo.py; )
 	@echo ""
 
 run-th-graphs:
 	@echo ""
 	@echo "Running application using venv virtual environment."
 	@echo ""
-	( source venv/bin/activate; python3.7 ./run/run_2_ThreadOptionGraphs.py; )
+	( source venv/bin/activate; python3 ./run/run_2_ThreadOptionGraphs.py; )
 	@echo ""
 
 run-thread:
 	@echo ""
 	@echo "Running application using venv virtual environment."
 	@echo ""
-	( source venv/bin/activate; python3.7 ./run/run_3_ThreadedOption.py; )
+	( source venv/bin/activate; python3 ./run/run_3_ThreadedOption.py; )
 	@echo ""
 
 doc-prune-all:
@@ -104,28 +104,28 @@ doc-prune-all:
 
 doc-test-img-ub:
 	@echo ""
-	@echo "Building docker image for tests using ubuntu image"
+	@echo "Building docker image for tests using ubuntu image (consider sudo if this doesn't work)"
 	@echo ""
 	docker build -f ./docker/DockerfileUB -t mark/optionpricing_tests_ub .
 	@echo ""
 
 doc-test-run-ub:
 	@echo ""
-	@echo "Running docker image as an interactive container for tests, using ubuntu"
+	@echo "Running docker image as an interactive container for tests, using ubuntu (consider sudo if this doesn't work)"
 	@echo ""
 	docker run -it mark/optionpricing_tests_ub
 	@echo ""
 
 doc-test-img-py:
 	@echo ""
-	@echo "Building docker image for tests using python image."
+	@echo "Building docker image for tests using python image. (consider sudo if this doesn't work)"
 	@echo ""
 	docker build -f ./docker/DockerfilePY -t mark/optionpricing_tests_py .
 	@echo ""
 
 doc-test-run-py:
 	@echo ""
-	@echo "Running docker image as an interactive container for tests, using python "
+	@echo "Running docker image as an interactive container for tests, using python (consider sudo if this doesn't work)"
 	@echo ""
 	docker run -it mark/optionpricing_tests_py
 	@echo ""
@@ -134,7 +134,7 @@ venv-test:
 	@echo ""
 	@echo "Running test in venv virtual environment."
 	@echo ""
-	( source venv/bin/activate; python3.7 -m unittest; )
+	( source venv/bin/activate; python3 -m unittest; )
 	@echo ""
 
 venv-cov-report:
