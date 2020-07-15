@@ -6,7 +6,7 @@ import math
 import test.ExternalData as ED
 
 '''
-These set of tests are used to ensure the EuropeanOptionBoundaryConditions
+These set of tests are used to ensure the EuropeanOption
 class is working correctly.
 It tests the  __str__, and the values returned from the BlackScholes model
 against the BoundaryConditions, put-call parity, delta range and compares
