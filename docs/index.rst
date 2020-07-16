@@ -26,8 +26,8 @@ https://quant.stackexchange.com/questions/18208/greeks-why-does-my-monte-carlo-g
 
 Becuase the number of simulations, as an input, is unlimited it is possible that large amounts of memory
 could be allocated, which may cause memory problems.   If this is the case, you will need to either
-i) Reduce the number of simulations, ii) Adjust or use another computer or iii) Modify the code so
-that the calculation is processed in smaller chunks.
+i) Reduce the number of simulations which may require adjustments to the tests, ii) Adjust or use
+another computer or iii) Modify the code so that the calculation is processed in smaller chunks.
 
 I have also created some docker files for running the tests.
 
