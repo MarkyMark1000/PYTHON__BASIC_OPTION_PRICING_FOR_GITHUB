@@ -19,8 +19,8 @@ virtual environment and a requirements file, but found that a relatively up to d
 was required such as 3.7.
 
 The Gamma calculation has a discontinuity at the strike price (imagine differentiating the intrinsic
-value of an option twice).   This makes the results a bit unstable.   See the following discussion
-for more information:
+value of an option twice).   This makes the Gamma results a bit unstable, which you will see in the
+graphs.   See the following discussion for more information:
 
 https://quant.stackexchange.com/questions/18208/greeks-why-does-my-monte-carlo-give-correct-delta-but-incorrect-gamma#%20greeks-why-does-my-monte-carlo-give-correct-delta-but-incorrect-gamma
 
