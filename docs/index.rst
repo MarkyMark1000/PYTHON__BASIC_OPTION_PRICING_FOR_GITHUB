@@ -19,11 +19,15 @@ virtual environment and a requirements file, but found that a relatively up to d
 was required such as 3.7.
 
 The Gamma calculation has a discontinuity at the strike price (imagine differentiating the intrinsic
-value of an option twice).   This makes the results a bit unstable for gamma and I have not looked
-into this further because my main objective was to try out Numpy, Pandas, Matplotlib etc.   See the
-following discussion for more information:
+value of an option twice).   This makes the results a bit unstable.   See the following discussion
+for more information:
 
 https://quant.stackexchange.com/questions/18208/greeks-why-does-my-monte-carlo-give-correct-delta-but-incorrect-gamma#%20greeks-why-does-my-monte-carlo-give-correct-delta-but-incorrect-gamma
+
+Becuase the number of simulations, as an input, is unlimited it is possible that large amounts of memory
+could be allocated, which may cause memory problems.   If this is the case, you will need to either
+i) Reduce the number of simulations, ii) Adjust or use another computer or iii) Modify the code so
+that the calculation is processed in smaller chunks.
 
 I have also created some docker files for running the tests.
 
