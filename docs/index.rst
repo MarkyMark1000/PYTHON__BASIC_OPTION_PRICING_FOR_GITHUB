@@ -30,6 +30,11 @@ i) Reduce the number of simulations which may require adjustments to the tests, 
 computer, iii) Use another computer or iv) Modify the code so that the calculation is processed in smaller
 chunks.
 
+In addition to this I wanted to explore using threads.   As far as I understand the Global Interpreter Lock
+should prevent more than 1 thread for each interpreter, but I am interested in the topic and decided to
+investigate this idea further.   I would like to add a version that uses the multiprocessing package,
+but this hasn't been achieved yet and isn't currently my highest priority.
+
 I have also created some docker files for running the tests.
 
 Installation Guide
