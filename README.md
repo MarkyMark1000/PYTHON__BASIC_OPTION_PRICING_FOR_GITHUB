@@ -22,6 +22,8 @@ The code has over 90% coverage and has been checked with pycodestyle.
 
 A docs directory has been created which I suggest you look at, but the key parts are shown below:
 
+![BasicOptionPricing](./docs/BasicOptionPricing1024x700.jpg)
+
 ## INSTALLATION
 
 ---
