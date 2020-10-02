@@ -18,6 +18,8 @@ and matplotlib has been met.
 This program uses a matrix of stock prices adjusted using a matrix of random numbers to generate a monte carlo price of an option, so 
 this application could be memory intensive.   I am running this on a macbook pro with 2.8 GHz and 16 GB of memory.
 
+A docs directory has been created which I suggest you look at, but the key parts are shown below:
+
 ## INSTALLATION
 
 ---
