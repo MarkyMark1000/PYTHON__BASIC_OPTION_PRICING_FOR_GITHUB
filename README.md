@@ -95,7 +95,8 @@ Unittests are very important when writing a pricing module because it can ensure
 
 Because we are quite often comparing calculated results against a result based upon random numbers, there was a chance that the unit tests could fail.   For this reason I allowed a large margin of error based upon the standard deviation when comparing option prices to their monte carlo prices.   At a later point in time I decided to create a unit test that uses 'patch object' to fix the random numbers generated.   This should 'fix'
 the unit test price result.   Both set of tests have been left in so that you could choose which style to use.   Using 'patch object' would
-probably be safer to ensure the price generated in the test is always consistent.
+probably be safer to ensure the price generated in the test is always consistent and you may need to remove or adjust the other unittests if
+the random numbers generated cause the monte carlo price to differ too much from the respective price or greek.
 
 ## MAKEFILE
 
