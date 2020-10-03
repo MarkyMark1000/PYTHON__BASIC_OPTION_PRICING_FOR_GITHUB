@@ -4,13 +4,14 @@ The objective of this project was to explore the use of numpy, pandas, scipy and
 to price European Options using the Black Scholes analysis and Monte Carlo Methods.
 
 Originally this code was written using Anaconda, however I decided to change the setup so that
-it used a local virtual environment in the directory which is setup using a requirements file.
+it was independent of Anaconda and used a local virtual environment in the directory which is setup using
+a requirements.txt file.
 
-I found that a relatively new version of python was required such as 3.7.
+I used a relatively new version of python - version 3.7.
 
 Analytics libraries can grow to be huge.   This one is very basic and is used only to explore the use of numpy.   I have not created
 a binomial tree, volsurface, borrow curve, dividends etc.   It is also worth noting that the Gamma calculation has a discontinuity
-at the strike price (imagine differentiating the intrinsic value of an option twice).
+at the strike price (imagine differentiating the intrinsic value of an option twice), which becomes noticable in the Gamma graphs.
 
 As time progresses, I may add to this library, but this will only be on an ad-hoc basis because my main objective of trying out numpy
 and matplotlib has been met.
@@ -92,9 +93,9 @@ installation please follow these instructions:
 
 Unittests are very important when writing a pricing module because it can ensure that the price generated is rational.
 
-Because we are quite often comparing calculated results against a result based upon random numbers, there was a chance that the unit tests could fail.   For this
-reason I allowed a large margin of error based upon the standard deviation when comparing option prices to their monte carlo prices.   At a later point in time I decided to create a unit test that uses patch object to fix the random numbers generated, which should fix the unit test price result.   Both set of tests
-have been left in so that you could choose which style to use.
+Because we are quite often comparing calculated results against a result based upon random numbers, there was a chance that the unit tests could fail.   For this reason I allowed a large margin of error based upon the standard deviation when comparing option prices to their monte carlo prices.   At a later point in time I decided to create a unit test that uses 'patch object' to fix the random numbers generated.   This should 'fix'
+the unit test price result.   Both set of tests have been left in so that you could choose which style to use.   Using 'patch object' would
+probably be safer to ensure the price generated in the test is always consistent.
 
 ## MAKEFILE
 
